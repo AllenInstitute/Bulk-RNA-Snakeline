@@ -1,1 +1,4 @@
-# Bulk-RNA-Snakeline
+Bulk-RNA-Snakeline
+=================================================
+![cover](Image/RNA-SEQ.png)
+
