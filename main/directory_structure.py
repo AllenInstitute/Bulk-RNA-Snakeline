@@ -53,21 +53,21 @@ for fastq_files in sorted(fastq_files_list):
 fout.close()
 
 # Clear existing input and output names for the samples
-fappen = open('configs/config.yml', 'r')
+fappen = open('../configs/config.yml', 'r')
 lines = fappen.readlines()
 io_index = len(lines)
 if 'io_name: \n' in lines:
     io_index = lines.index('io_name: \n')
 fappen.close()
 
-fappen = open('configs/config.yml', 'w')
+fappen = open('../configs/config.yml', 'w')
 filtered_lines = lines[0: io_index]
 for line in filtered_lines:
     fappen.write(line)
 fappen.close()
 
 # Append config yml file by adding input and output names for the samples
-fappen = open('configs/config.yml', 'a')
+fappen = open('../configs/config.yml', 'a')
 fappen.write("io_name: {}".format('\n'))
 
 for count, fastq_files in enumerate(sorted(fastq_files_list)):
