@@ -52,4 +52,4 @@ The Bioinformatics Core team at Allen Institute, currently has a pipeline in pla
 Allen Institute Bioinformatics Core Team
  
 ## References
-
+Johannes Köster, Sven Rahmann, Snakemake—a scalable bioinformatics workflow engine, Bioinformatics, Volume 28, Issue 19, 1 October 2012, Pages 2520–2522, https://doi.org/10.1093/bioinformatics/bts480
