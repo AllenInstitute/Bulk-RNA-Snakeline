@@ -1,0 +1,21 @@
+project_name: snakeline
+
+cutadapt:
+  fadapter: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA"
+  radapter: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT"
+
+io_name: 
+	sample_1: AB-BR3004-S001_E1-50_S1_L001_R1_001.fastq.gz
+	sample_2: AB-BR3004-S001_E1-50_S1_L001_R2_001.fastq.gz
+	sample_3: AB-BR3004-S002_E1-50_S2_L001_R1_001.fastq.gz
+	sample_4: AB-BR3004-S002_E1-50_S2_L001_R2_001.fastq.gz
+	sample_5: AB-BR3004-S003_E1-50_S3_L001_R1_001.fastq.gz
+	sample_6: AB-BR3004-S003_E1-50_S3_L001_R2_001.fastq.gz
+	sample_7: AB-BR3004-S004_E1-50_S4_L001_R1_001.fastq.gz
+	sample_8: AB-BR3004-S004_E1-50_S4_L001_R2_001.fastq.gz
+	sample_9: AB-BR3004-S005_E1-50_S5_L001_R1_001.fastq.gz
+	sample_10: AB-BR3004-S005_E1-50_S5_L001_R2_001.fastq.gz
+	sample_11: AB-BR3004-S006_E1-50_S6_L001_R1_001.fastq.gz
+	sample_12: AB-BR3004-S006_E1-50_S6_L001_R2_001.fastq.gz
+	sample_13: AB-BR3004-S007_E1-50_S7_L001_R1_001.fastq.gz
+	sample_14: AB-BR3004-S007_E1-50_S7_L001_R2_001.fastq.gz
