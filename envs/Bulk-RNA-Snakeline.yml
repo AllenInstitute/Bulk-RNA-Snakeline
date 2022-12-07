@@ -1,5 +1,4 @@
 name: snakeline_env
-name: rna_workflow
 channels:
   - conda-forge
   - bioconda
