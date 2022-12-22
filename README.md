@@ -31,7 +31,11 @@ conda activate snakeline_env
 ```bash
 python3 setup.py
 ```
-6. Run command to execute snakemake and run the workflow
+6. Adjust parameters in config.yml 
+```bash
+config/config.yml
+```
+7. Run command to execute snakemake and run the workflow
 ```
 snakemake --cores 12 -s <snakefile>
 ```
