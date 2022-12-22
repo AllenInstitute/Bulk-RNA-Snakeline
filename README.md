@@ -48,7 +48,7 @@ The Bioinformatics Core team at Allen Institute, currently has a pipeline in pla
 ## Authors and History
 
 * Beagan Nguy - Algorithm Design
-* Anish Chakka - Algorithm Design
+* Anish Chakka - Project Manager
 
 ## Acknowledgments
 
