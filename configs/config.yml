@@ -1,21 +1,34 @@
-project_name: snakeline
+project_name: 
+  "snakeline"
 
 cutadapt:
   fadapter: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA"
   radapter: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT"
+  cut: 3
+  min: 25
+  quality_score: 15
+  threads: 12
 
-io_name: 
-	sample_1: AB-BR3004-S001_E1-50_S1_L001_R1_001.fastq.gz
-	sample_2: AB-BR3004-S001_E1-50_S1_L001_R2_001.fastq.gz
-	sample_3: AB-BR3004-S002_E1-50_S2_L001_R1_001.fastq.gz
-	sample_4: AB-BR3004-S002_E1-50_S2_L001_R2_001.fastq.gz
-	sample_5: AB-BR3004-S003_E1-50_S3_L001_R1_001.fastq.gz
-	sample_6: AB-BR3004-S003_E1-50_S3_L001_R2_001.fastq.gz
-	sample_7: AB-BR3004-S004_E1-50_S4_L001_R1_001.fastq.gz
-	sample_8: AB-BR3004-S004_E1-50_S4_L001_R2_001.fastq.gz
-	sample_9: AB-BR3004-S005_E1-50_S5_L001_R1_001.fastq.gz
-	sample_10: AB-BR3004-S005_E1-50_S5_L001_R2_001.fastq.gz
-	sample_11: AB-BR3004-S006_E1-50_S6_L001_R1_001.fastq.gz
-	sample_12: AB-BR3004-S006_E1-50_S6_L001_R2_001.fastq.gz
-	sample_13: AB-BR3004-S007_E1-50_S7_L001_R1_001.fastq.gz
-	sample_14: AB-BR3004-S007_E1-50_S7_L001_R2_001.fastq.gz
+# Changes to star_version needs to be updated on line 13 and 22
+star_version: "star_v2.7.10b"
+
+star_index:
+  assembly_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/fasta/v101/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa"
+  gtf: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/gtf/v101/Homo_sapiens.GRCh38.101.gtf"
+  threads: "12"
+  numOverhang: "100"
+
+star_nsupplied:
+  genome_dir: "/Pipeline/STAR/genome/star_v2.7.10b"
+
+# If star index is present add into genome_dir key
+star_supplied:
+  genome_dir: "False"
+  # Example
+  # genome_dir: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ensembl/mmul10/genome/star_v2.7.10b"
+
+
+#sample: 
+#  ['AB-BR3004-S001_E1-50_S1_L001', 'AB-BR3004-S002_E1-50_S2_L001', 'AB-BR3004-S003_E1-50_S3_L001', 'AB-BR3004-S004_E1-50_S4_L001', 'AB-BR3004-S005_E1-50_S5_L001', 'AB-BR3004-S006_E1-50_S6_L001', 'AB-BR3004-S007_E1-50_S7_L001']
+
+# Append
