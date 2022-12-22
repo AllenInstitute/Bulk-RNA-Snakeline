@@ -43,7 +43,7 @@ The Bioinformatics Core team at Allen Institute, currently has a pipeline in pla
 ![alt text](Image/pipeline.png)
 
 ## Directory Structure
-![alt text](Image/ile_structure.png)
+![alt text](Image/file_structure.png)
   
 ## Authors and History
 
