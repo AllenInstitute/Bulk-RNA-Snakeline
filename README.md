@@ -10,6 +10,8 @@ Table of Contents
 * [Usage](#usage)
 * [About-Snakeline](#About-Snakeline)
 * [Authors and history](#authors-and-history)
+* [Pipeline Overview](#Pipeline Overview)
+* [Directory Structure](#Directory Structure)
 * [Acknowledgments](#acknowledgments)
 * [References](#references)
 
