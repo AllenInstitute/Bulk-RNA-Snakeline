@@ -29,7 +29,7 @@ conda activate snakeline_env
 4. Move RAW Fastq Files into Bulk-RNA-Snakeline Folder
 5. Run command to prepare the pipeline by creating directory structure
 ```bash
-python3 directory_structure.py
+python3 setup.py
 ```
 6. Run command to execute snakemake and run the workflow
 ```
