@@ -33,7 +33,7 @@ python3 directory_structure.py
 ```
 6. Run command to execute snakemake and run the workflow
 ```
-snakemake --cores 1 -s <snakefile>
+snakemake --cores 12 -s <snakefile>
 ```
   
 ## About-Bulk-RNA-Snakeline
