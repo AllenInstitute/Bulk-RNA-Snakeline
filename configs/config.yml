@@ -9,11 +9,12 @@ cutadapt:
   quality_score: 15
   threads: 12
 
-# Changes to star_version needs to be updated on line 13 and 22
+# Changes to star_version needs to be updated on line 13 and 24
 star_version: "star_v2.7.10b"
 
 star_index:
   assembly_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/fasta/v101/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa"
+  # GTF path needs to be added on line 18 and 32
   gtf: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/gtf/v101/Homo_sapiens.GRCh38.101.gtf"
   threads: "12"
   numOverhang: "100"
@@ -27,6 +28,8 @@ star_supplied:
   # Example
   # genome_dir: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ensembl/mmul10/genome/star_v2.7.10b"
 
+stringTie:
+  gtf: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/gtf/v101/Homo_sapiens.GRCh38.101.gtf"
 
 #sample: 
 #  ['AB-BR3004-S001_E1-50_S1_L001', 'AB-BR3004-S002_E1-50_S2_L001', 'AB-BR3004-S003_E1-50_S3_L001', 'AB-BR3004-S004_E1-50_S4_L001', 'AB-BR3004-S005_E1-50_S5_L001', 'AB-BR3004-S006_E1-50_S6_L001', 'AB-BR3004-S007_E1-50_S7_L001']
