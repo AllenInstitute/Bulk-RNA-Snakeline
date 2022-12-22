@@ -1,7 +1,7 @@
 rule stringTie:
     input:
         bam_dir="/Pipeline/STAR"
-        gtf=config['stringTie']['gtf_path']
+        gtf=config['stringTie']['gtf']
     output:
         bam="/Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam"
     params:
