@@ -7,7 +7,7 @@ rule star:
     params:
         genome_dir=config['star_supplied']
     threads:
-        12
+        12  # Set the maximum number of available cores
     resources:
         mem_mb=60000
     priority:
