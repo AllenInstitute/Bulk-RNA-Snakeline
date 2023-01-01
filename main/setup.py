@@ -77,3 +77,13 @@ with open('configs/config.yml', 'a') as f:
     sys.stdout = f
     print(sorted(fastq_files_list))
     sys.stdout = original_stdout
+
+
+
+
+
+
+
+
+
+
