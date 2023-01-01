@@ -1,13 +1,14 @@
 rule starIndex:
     input: 
-        assembly=config['star_index']['assembly_path'],
-        gtf=config['star_index']['gtf_path']
+        assembly=config['star_index']['assembly_path'], # Provide your reference FASTA file
+        gtf=config['star_index']['gtf_path']    # Provide your GTF file
     output:
         genome_dir="/Pipeline/STAR/genome/config['star_version']",
+        # Alt directory('/Pipeline/STAR/genome/config['star_version']')
     params:
-        numOverhang=config['star_index']['overhang']
+        numOverhang=config['star_index']['overhang']    # Num Overhang Nucleotides
     threads:
-        config['threads']
+        config['threads']   # Set the maximum number of available cores
     resources:
         mem_mb=60000
     priority:
