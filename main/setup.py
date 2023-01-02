@@ -20,7 +20,8 @@ os.system('mkdir -p Pipeline/STAR/genome')
 # Make Directories for StringTie
 os.system('mkdir -p Pipeline/StringTie')
 
-get_fastq = re.compile('(.*R1.*fastq.gz$)|(.*R2.*fastq.gz$)')
+# Samples files must follow <sample_name>R1_<digits>.fastq.gz
+get_fastq = re.compile('(.*R1_\d*fastq.gz$)|(.*R2_\d*fastq.gz$)')
 
 # Search for fastq files
 r1_list = list()
@@ -48,8 +49,15 @@ for fastq_file_path in r2_list:
 fout = open('sample_list.txt', 'w')
 
 fastq_files_list = os.listdir('Pipeline/Fastq/Raw')
+suffix_fastq_list = list()
 for fastq_files in sorted(fastq_files_list):
-    fout.write('{}\n'.format(fastq_files))
+    if 'R1' in fastq_files:
+        suffix_fastq_file = fastq_files.replace("_R1_001.fastq.gz", "")
+        suffix_fastq_list.append(suffix_fastq_file)
+    else:
+        suffix_fastq_file = fastq_files.replace("_R2_001.fastq.gz", "")
+        suffix_fastq_list.append(suffix_fastq_file)
+    fout.write('{}\n'.format(suffix_fastq_file))
 
 fout.close()
 
@@ -72,10 +80,12 @@ fappen.close()
 # Append config yml file by adding input and output names for the samples
 
 # Input names for raw fastq sample fies
+sorted_fastq = sorted([*set(suffix_fastq_list)])
+
 original_stdout = sys.stdout
 with open('configs/config.yml', 'a') as f:
     sys.stdout = f
-    print(sorted(fastq_files_list))
+    print(' {}'.format(sorted_fastq))
     sys.stdout = original_stdout
 
 
