@@ -23,7 +23,7 @@ git clone 'https://github.com/beagan-svg/Bulk-RNA-Snakeline'
 ```
 2. Create Conda Environement and Load all dependencies to run the pipeline
 ```bash
-conda env create -f envs/Bulk-RNA-Snakeline.yml
+conda env create --name snakeline_env -f envs/Bulk-RNA-Snakeline.yml 
 ```
 3. Activate Conda Environment
 ```
