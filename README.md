@@ -8,7 +8,7 @@ With advancements in sequencing technology, a higher number of samples, and grea
 Table of Contents
 -----------------
 * [Usage](#usage)
-* [Required Tools] (#Required-Tools)
+* [Required Tools](#Required-Tools)
 * [About-Snakeline](#About-Snakeline)
 * [Authors and history](#authors-and-history)
 * [Pipeline Overview](#Pipeline-Overview)
