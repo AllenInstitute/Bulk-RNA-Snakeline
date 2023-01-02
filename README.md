@@ -9,7 +9,7 @@ Table of Contents
 -----------------
 * [Usage](#usage)
 * [Required Tools](#Required-Tools)
-* [About-Snakeline](#About-Snakeline)
+* [About-Snakeline](#About-Bulk-RNA-Snakeline)
 * [Authors and history](#authors-and-history)
 * [Pipeline Overview](#Pipeline-Overview)
 * [Directory Structure](#Directory-Structure)
