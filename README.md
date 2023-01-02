@@ -39,12 +39,12 @@ python3 setup.py
 config/config.yml
 ```
 7. Run command to execute snakemake and run the workflow
+```
+snakemake --cores 12 -s <snakefile>
+```
 7b. (Optional) Using Slurm
 ```
 srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s main.smk
-```
-```
-snakemake --cores 12 -s <snakefile>
 ```
 ## Required Tools  
 
