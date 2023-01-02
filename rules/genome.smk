@@ -3,7 +3,7 @@ rule starIndex:
         assembly=config['star_index']['assembly_path'], # Provide your reference FASTA file
         gtf=config['star_index']['gtf_path']    # Provide your GTF file
     output:
-        genome_dir="Pipeline/STAR/genome/{}".format(config['star_version']),
+        genome_dir="Pipeline/STAR/genome/{}/SAindex".format(config['star_version']),
         # Alt directory('/Pipeline/STAR/genome/config['star_version']')
     params:
         numOverhang=config['star_index']['numOverhang']    # Num Overhang Nucleotides
