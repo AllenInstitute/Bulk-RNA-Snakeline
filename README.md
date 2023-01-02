@@ -8,7 +8,8 @@ With advancements in sequencing technology, a higher number of samples, and grea
 Table of Contents
 -----------------
 * [Usage](#usage)
-* [About-Snakeline](#About-Snakeline)
+* [Required Tools](#Required-Tools)
+* [About-Snakeline](#About-Bulk-RNA-Snakeline)
 * [Authors and history](#authors-and-history)
 * [Pipeline Overview](#Pipeline-Overview)
 * [Directory Structure](#Directory-Structure)
@@ -22,7 +23,7 @@ git clone 'https://github.com/beagan-svg/Bulk-RNA-Snakeline'
 ```
 2. Create Conda Environement and Load all dependencies to run the pipeline
 ```bash
-conda env create -f envs/Bulk-RNA-Snakeline.yml
+conda env create --name snakeline_env -f envs/Bulk-RNA-Snakeline.yml 
 ```
 3. Activate Conda Environment
 ```
@@ -41,7 +42,20 @@ config/config.yml
 ```
 snakemake --cores 12 -s <snakefile>
 ```
-  
+7b. (Optional) Using Slurm
+```
+srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s main.smk
+```
+## Required Tools  
+
+ * [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (A quality control tool for high throughput sequence data)
+
+ * [CutAdapt](https://journal.embnet.org/index.php/embnetjournal/article/view/200/0) (Automates quality  control and adapter trimming of fastq files)
+
+ * [STAR](https://github.com/alexdobin/STAR) (Spliced aware ultrafast transcript alligner to reference genome)
+
+ * [StringTie](https://ccb.jhu.edu/software/stringtie/) (A fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.)
+
 ## About-Bulk-RNA-Snakeline
 The Bioinformatics Core team at Allen Institute, currently has a pipeline in place to process raw Bulk RNA-Seq data. However, the existing pipeline requires users to execute a series of custom bash scripts for every step in the workflow. Not only is this time-consuming, but requires additional effort from the user to ensure each script is executed properly with the right parameter adjustments according to the data and its file path. With this method, it is important to understand that any user error may affect downstream analysis and ultimately risk the accuracy of the results. Additionally, users can be challenged with input and output compatibility issues when running multiple scripts. This is when the output files generated from script A fail to be compatible with the inputs into script B because of file formatting and/or versioning. There also needs to be a check on the virtual environment, ensuring every software tool is installed successfully with all the necessary dependencies. In order to minimize the number of manual steps that are required to execute the processing workflow on Bulk RNA-Seq data, the BiCore team is migrating from a basic pipeline written in Unix shell to Snakemake. Snakemake is an easy to use workflow engine that can be used to process data through well defined rules. Each rule contains a set of input and output files, parameters; the computational tasks that will be executed, and optionally a path to the environment. This is a unique feature offered by Snakemake that increases readability by reducing the complexity of the code. Snakemake was designed specifically for Bioinformatics analysis and is the reason it is known as a domain-specific language (DSL). Snakemake was determined as the most suitable workflow engine for the BiCore team because it includes the beneficial properties of portability, readability, reproducibility, scalability, and reusability.  
 
