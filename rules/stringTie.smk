@@ -1,12 +1,11 @@
 rule stringTie:
     input:
-        bam_dir="/Pipeline/STAR"
         gtf=config['stringTie']['gtf']
     output:
-        bam="/Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam"
+        bam="Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam"
     params:
-        transcript="/Pipeline/StringTie/{sample}.transcripts.gtf",
-        gene_abund="/Pipeline/StringTie/{sample}.gene_abund.tab"
+        transcript="Pipeline/StringTie/{sample}.transcripts.gtf",
+        gene_abund="Pipeline/StringTie/{sample}.gene_abund.tab"
     threads:
         12
     priority:
@@ -18,4 +17,4 @@ rule stringTie:
         "-A {params.gene_abund} "
         "--fr "
         "-p {threads} "
-        "{bam_dir}/{sample}/{sample}Aligned.sortedByCoord.out.bam"
+        "Pipeline/STAR/{wildcards.sample}/{wildcards.sample}Aligned.sortedByCoord.out.bam"
