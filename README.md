@@ -34,7 +34,7 @@ conda activate snakeline_env
 ```bash
 python3 setup.py
 ```
-5.b (If sample_list.txt is supplied) Remember to move fastq files into ulk-RNA-Snakeline Folder
+5.b If sample_list.txt is supplied
 ```bash
 python3 setup.py -s <name_of_sample_file>
 ```
