@@ -34,6 +34,10 @@ conda activate snakeline_env
 ```bash
 python3 setup.py
 ```
+5.b (If sample_list.txt is supplied) Remember to move fastq files into ulk-RNA-Snakeline Folder
+```bash
+python3 setup.py -s <name_of_sample_file>
+```
 6. Adjust parameters in config.yml 
 ```bash
 config/config.yml
@@ -46,6 +50,7 @@ snakemake --cores 12 -s <snakefile>
 ```
 srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s main.smk
 ```
+Notes. This pipeline will take a long time depending on the data.
 ## Required Tools  
 
  * [FastQC 0.11.9](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (A quality control tool for high throughput sequence data)
