@@ -7,7 +7,7 @@ import argparse
 # Arg_parser
 def getArgs():
     parser = argparse.ArgumentParser(
-        description='Optional arguments: -s', usage='python3 final_deduper.py -s <sample_list.txt>'
+        description='Optional arguments: -s', usage='python3 setup.py -s <sample_list.txt>'
     )
 
     parser.add_argument(
