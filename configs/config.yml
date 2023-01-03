@@ -12,7 +12,7 @@ cutadapt:
 fastqc:
   threads: 12  
 
-# Changes to star_version needs to be updated on line 13 and 24
+# Changes to star_version needs to be updated on line 16 and 26
 star_version: "star_v2.7.10b"
 
 star_index:
