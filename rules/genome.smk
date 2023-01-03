@@ -21,4 +21,4 @@ rule starIndex:
         "--genomeChrBinNbits 10 "
         "--sjdbGTFfile {input.gtf} "
         "--sjdbOverhang {params.numOverhang} "
-        "--runThreadN {threads} "
+        "--runThreadN {threads}"
