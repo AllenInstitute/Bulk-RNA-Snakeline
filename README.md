@@ -52,7 +52,7 @@ srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s mai
 
  * [CutAdapt 4.1](https://journal.embnet.org/index.php/embnetjournal/article/view/200/0) (Automates quality  control and adapter trimming of fastq files)
 
- * [STAR 0.1.2](https://github.com/alexdobin/STAR) (Spliced aware ultrafast transcript alligner to reference genome)
+ * [STAR v2.7.10b](https://github.com/alexdobin/STAR) (Spliced aware ultrafast transcript alligner to reference genome)
 
  * [StringTie 2.2.1](https://ccb.jhu.edu/software/stringtie/) (A fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.)
 
