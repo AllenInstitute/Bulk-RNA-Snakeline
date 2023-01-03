@@ -4,8 +4,8 @@ rule stringTie:
     output:
         bam="Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam"
     params:
-        transcript="Pipeline/StringTie/{sample}.transcripts.gtf",
-        gene_abund="Pipeline/StringTie/{sample}.gene_abund.tab"
+        transcript="Pipeline/StringTie/{sample}/{sample}.transcripts.gtf",
+        gene_abund="Pipeline/StringTie/{sample}/{sample}.gene_abund.tab"
     threads:
         12
     priority:
