@@ -1,6 +1,20 @@
 import os
+# PyPackages to import
 import re
 import sys
+import argparse
+
+# Arg_parser
+def getArgs():
+    parser = argparse.ArgumentParser(
+        description='Optional arguments: -s', usage='python3 final_deduper.py -s <sample_list.txt>'
+    )
+
+    parser.add_argument(
+        '-s', '-sample', help='Input list of sample names', required=False
+    )
+
+    return parser.parse_args()
 
 # Make Directories for FASTQ files
 os.system('mkdir -p Pipeline')
@@ -45,21 +59,26 @@ for fastq_file_path in r2_list:
     if 'Pipeline/Fastq/Raw' not in fastq_file_path:
         os.system('mv {} Pipeline/Fastq/Raw'.format(fastq_file_path))
 
-# Output fastq files to sample_list.txt
-fout = open('sample_list.txt', 'w')
+# --------------------------------------
+# Input/Outputs
+args = getArgs()
+fastq_name_list = list()
 
-fastq_files_list = os.listdir('Pipeline/Fastq/Raw')
-suffix_fastq_list = list()
-for fastq_files in sorted(fastq_files_list):
-    if 'R1' in fastq_files:
-        suffix_fastq_file = fastq_files.replace("_R1_001.fastq.gz", "")
-        suffix_fastq_list.append(suffix_fastq_file)
-    else:
-        suffix_fastq_file = fastq_files.replace("_R2_001.fastq.gz", "")
-        suffix_fastq_list.append(suffix_fastq_file)
-    fout.write('{}\n'.format(suffix_fastq_file))
-
-fout.close()
+# If sample_list.txt is supplied
+if args.s:
+    sample_txt_open = open(args.s, 'r')   
+    for sample_name in sample_txt_open:
+        fastq_name_list.append(sample_name.rstrip())
+else:
+    # Store all available raw fastq file names into a list
+    fastq_files_list = os.listdir('Pipeline/Fastq/Raw')
+    for fastq_files in sorted(fastq_files_list):
+        if 'R1' in fastq_files:
+            suffix_fastq_file = fastq_files.replace("_R1_001.fastq.gz", "")
+            fastq_name_list.append(suffix_fastq_file)
+        else:
+            suffix_fastq_file = fastq_files.replace("_R2_001.fastq.gz", "")
+            fastq_name_list.append(suffix_fastq_file)
 
 # Clear existing input and output names for the samples
 fappen = open('configs/config.yml', 'r')
@@ -77,21 +96,15 @@ for line in filtered_lines:
     fappen.write(line)
 fappen.close()
 
-# Append config yml file by adding input and output names for the samples
+# Sort and remove duplicates of fastq names
+sorted_fastq = sorted([*set(fastq_name_list)])
 
-# Input names for raw fastq sample fies
-sorted_fastq = sorted([*set(suffix_fastq_list)])
-
+# Append config yml file by adding input names for the samples key
 original_stdout = sys.stdout
 with open('configs/config.yml', 'a') as f:
     sys.stdout = f
     print(' {}'.format(sorted_fastq))
     sys.stdout = original_stdout
-
-
-
-
-
 
 
 
