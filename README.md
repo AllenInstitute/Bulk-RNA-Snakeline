@@ -50,6 +50,10 @@ snakemake --cores 12 -s <snakefile>
 ```
 srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s main.smk
 ```
+8. Errors: A raised LockException can be encountered. Solution
+```
+rm .snakemake/locks/*
+```
 Notes. This pipeline will take a long time depending on the data.
 ## Required Tools  
 
