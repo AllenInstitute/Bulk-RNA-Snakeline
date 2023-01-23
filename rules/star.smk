@@ -3,7 +3,7 @@ rule star:
         read_1="Pipeline/Fastq/CutAdapt/{sample}_R1_001.cutadapt.fastq.gz",
         read_2="Pipeline/Fastq/CutAdapt/{sample}_R2_001.cutadapt.fastq.gz"
     output:
-        align_bam="Pipeline/STAR/{sample}/{sample}Aligned.toTranscriptome.out.bam"
+        align_bam="Pipeline/STAR/out/{sample}/{sample}Aligned.toTranscriptome.out.bam"
     params:
         genome_dir=config['star_supplied']['genome_dir'],
         out_dir="Pipeline/STAR/out"
