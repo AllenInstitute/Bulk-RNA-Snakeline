@@ -1,4 +1,3 @@
-# PyPackages to import
 import os
 import re
 import sys
@@ -30,12 +29,13 @@ os.system('mkdir -p Pipeline/QC/CutAdapt')
 # Make Directories for STAR
 os.system('mkdir -p Pipeline/STAR')
 os.system('mkdir -p Pipeline/STAR/genome')
+os.system('mkdir -p Pipeline/STAR/genome/out')
 
 # Make Directories for StringTie
 os.system('mkdir -p Pipeline/StringTie')
 
 # Samples files must follow <sample_name>R1_<digits>.fastq.gz
-get_fastq = re.compile('(.*R1_\d*fastq.gz$)|(.*R2_\d*fastq.gz$)')
+get_fastq = re.compile('(.*R1_\d*.fastq.gz$)|(.*R2_\d*.fastq.gz$)')
 
 # Search for fastq files
 r1_list = list()
@@ -87,7 +87,6 @@ io_index = len(lines)
 
 if '# Append\n' in lines:
     io_index = lines.index('# Append\n')
-    print(io_index)
 fappen.close()
 
 fappen = open('configs/config.yml', 'w')
@@ -106,7 +105,28 @@ with open('configs/config.yml', 'a') as f:
     print(' {}'.format(sorted_fastq))
     sys.stdout = original_stdout
 
+# Check STAR index version matches version of STAR installed.
+starversion = ''
+with open('configs/config.yml', 'r', encoding='utf-8') as file:
+    config_data = file.readlines()
 
+    star_index_path = config_data[30]
+    split_star_index_path = star_index_path.split('"')
+    split_star_version_index_line = list()
 
+    if star_index_path != "False":
+        try:
+            with open('{}/genomeParameters.txt'.format(split_star_index_path[1]), 'r', encoding='utf-8') as file:
+                genome_param = file.readlines()
+                star_version_index_line = genome_param[2].rstrip()
+                split_star_version_index_line = star_version_index_line.split('\t')
+        except:
+            raise Exception("\n\n Double Check: '{}' EXIST".format(split_star_index_path))
+    
+    starversion = config_data[16].split('"')
+    if starversion[1].split('v')[1] != split_star_version_index_line[1]:
+        raise Exception("\n\n STAR Version installed: {} is not the same STAR version used to build STAR index directory: {}".format(starversion[1].split('v')[1], split_star_version_index_line[1]))
+    else:
+        print('Setup is Complete...continue to run snakemake pipeline')
 
 
