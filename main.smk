@@ -21,7 +21,7 @@ if config['star_supplied']['genome_dir'] != "False":
             # Output quality control summary of trimmed fastq
             expand("Pipeline/QC/CutAdapt/{sample}_{read_no}_001.cutadapt_fastqc.{ext}", sample=SAMPLES, read_no=['R1', 'R2'], ext=['html', 'zip']),
             # Output aligned bam files from STAR
-            expand("Pipeline/STAR/{sample}/{sample}Aligned.toTranscriptome.out.bam", sample=SAMPLES),
+            expand("Pipeline/STAR/out/{sample}/{sample}Aligned.toTranscriptome.out.bam", sample=SAMPLES),
             # Output from stringtie
             expand("Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam", sample=SAMPLES)
     include: "rules/trim.smk"
