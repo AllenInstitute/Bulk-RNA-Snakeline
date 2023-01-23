@@ -2,7 +2,7 @@ rule stringTie:
     input:
         gtf=config['stringTie']['gtf']
     output:
-        bam="Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam"
+        bam="Pipeline/StringTie/out/{sample}/{sample}Aligned.sortedByCoord.out.bam"
     params:
         transcript="Pipeline/StringTie/{sample}/{sample}.transcripts.gtf",
         gene_abund="Pipeline/StringTie/{sample}/{sample}.gene_abund.tab"
