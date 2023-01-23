@@ -61,7 +61,7 @@ Notes. This pipeline will take a long time depending on the data.
 
  * [CutAdapt 4.1](https://journal.embnet.org/index.php/embnetjournal/article/view/200/0) (Automates quality  control and adapter trimming of fastq files)
 
- * [STAR v2.7.10b](https://github.com/alexdobin/STAR) (Spliced aware ultrafast transcript alligner to reference genome)
+ * [STAR v2.7.1a](https://github.com/alexdobin/STAR) (Spliced aware ultrafast transcript alligner to reference genome)
 
  * [StringTie 2.2.1](https://ccb.jhu.edu/software/stringtie/) (A fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.)
 
