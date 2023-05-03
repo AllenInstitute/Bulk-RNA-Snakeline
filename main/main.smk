@@ -22,7 +22,7 @@ rule all:
         "Pipeline/STAR/genome/{}".format(config['star_version']),
         expand("Pipeline/STAR/{sample}/{sample}Aligned.toTranscriptome.out.bam", sample=SAMPLES),
         # Output from stringtie
-        expand("Pipeline/StringTie/{sample}/{sample}Aligned.sortedByCoord.out.bam", sample=SAMPLES)
+        expand("Pipeline/StringTie/out/{sample}/{sample}Aligned.sortedByCoord.out.bam", sample=SAMPLES)
 
 # Case where star index directory is supplied
 if config['star_supplied']['genome_dir'] != "False":
