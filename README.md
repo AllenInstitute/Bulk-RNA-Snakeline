@@ -54,6 +54,10 @@ srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s mai
 ```
 rm .snakemake/locks/*
 ```
+8b. Errors: Directory cannot be locked
+```
+snakemake --unlock
+```
 Notes. This pipeline will take a long time depending on the data.
 ## Required Tools  
 
