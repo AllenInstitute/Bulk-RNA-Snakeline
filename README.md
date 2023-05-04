@@ -56,7 +56,7 @@ rm .snakemake/locks/*
 ```
 8b. Errors: Directory cannot be locked
 ```
-snakemake --unlock
+srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s main.smk --unlock
 ```
 8c. Errors: Incomplete Run
 ```
