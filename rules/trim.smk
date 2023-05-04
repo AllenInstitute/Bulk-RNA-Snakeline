@@ -13,6 +13,8 @@ rule cutadapt:
         quality_score=config['cutadapt']['quality_score'],  
     threads:
         config['cutadapt']['threads']
+    log:
+        "logs/CutAdapt/{sample}_cutadapt.log"
     priority:
         5
     shell:
@@ -25,4 +27,4 @@ rule cutadapt:
         "-q {params.quality_score} " # Quality Score per base
         "-j {threads} " # Cores
         "{input.read_1} "
-        "{input.read_2}"
+        "{input.read_2} > {log} 2>&1"
