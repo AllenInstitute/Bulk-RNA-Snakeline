@@ -11,6 +11,8 @@ rule starIndex:
         config['star_index']['threads']   # Set the maximum number of available cores
     resources:
         mem_mb=60000
+    log:
+        "logs/star_index.log"
     priority:
         3
     shell:
@@ -21,4 +23,4 @@ rule starIndex:
         "--genomeChrBinNbits 10 "
         "--sjdbGTFfile {input.gtf} "
         "--sjdbOverhang {params.numOverhang} "
-        "--runThreadN {threads}"
+        "--runThreadN {threads} > {log} 2>&1"
