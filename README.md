@@ -17,57 +17,60 @@ Table of Contents
 * [References](#references)
 
 ## Usage
-1. Clone the repository
-```bash
-git clone 'https://github.com/beagan-svg/Bulk-RNA-Snakeline'
-```
-2. Create Conda Environement and Load all dependencies to run the pipeline
-```bash
-conda env create --name snakeline_env -f envs/Bulk-RNA-Snakeline.yml 
-```
-3. Activate Conda Environment
-```
-conda activate snakeline_env
-```
-4. Move RAW Fastq Files into Bulk-RNA-Snakeline Folder
-5. Run command to prepare the pipeline by creating directory structure
-```bash
-python3 setup.py
-```
-5b. If sample_list.txt is supplied
-```bash
-python3 setup.py -s <name_of_sample_file>
-```
-6. Adjust parameters in config.yml 
-```bash
-config/config.yml
-```
-7. Run command to execute snakemake and run the workflow
-```
-snakemake --cores 12 -s <snakefile>
-```
-7b. (Optional) Using Slurm
-```
-srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 160 -s main.smk
-```
-```
-sbatch run.sh
-```
-8. Errors: A raised LockException can be encountered
-```
-rm .snakemake/locks/*
-```
-8b. Errors: Directory cannot be locked
-```
-snakemake -s main.smk --unlock
-```
-8c. Errors: Incomplete Run
-```
-srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 160 -s main.smk --latency-wait 60 --rerun-incomplete
-```
-```
-sbatch rerun.sh
-```
+Follow these steps to use the Bulk-RNA-Snakeline:
+1. Download the repository (.zip), move it to your working directory, and unzip it
+2. Create and load Conda environment with all dependencies:
+    ```bash
+    conda env create --name snakeline_env -f envs/Bulk-RNA-Snakeline.yml 
+    ```
+3. Activate the Conda environment:
+    ```bash
+    conda activate snakeline_env
+    ```
+4. Move RAW Fastq Files into `Bulk-RNA-Snakeline` folder.
+5. Prepare the pipeline by creating directory structure:
+    ```bash
+    python3 setup.py
+    ```
+    Or if `sample_list.txt` is supplied:
+    ```bash
+    python3 setup.py -s <name_of_sample_file>
+    ```
+6. Adjust parameters in `config.yml`:
+    ```bash
+    nano config/config.yml
+    ```
+7. Execute snakemake and run the workflow:
+    ```bash
+    snakemake --cores 12 -s <snakefile>
+    ```
+    Or using Slurm (optional):
+    ```bash
+    srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 160 -s main.smk
+    ```
+    ```bash
+    sbatch run.sh
+    ```
+8. Troubleshooting common errors:
+
+    - A raised LockException:
+        ```bash
+        rm .snakemake/locks/*
+        ```
+    - Directory cannot be locked:
+        ```bash
+        snakemake -s main.smk --unlock
+        ```
+    - Incomplete Run:
+        ```bash
+        srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 160 -s main.smk --latency-wait 60 --rerun-incomplete
+        ```
+        ```bash
+        sbatch rerun.sh
+        ```
+
+> **Note:** This pipeline will take a long time depending on the data and number of cores available.
+
 Notes. This pipeline will take a long time depending on the data.
 ## Required Tools  
 
