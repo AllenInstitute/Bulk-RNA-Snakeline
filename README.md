@@ -71,7 +71,6 @@ Follow these steps to use the Bulk-RNA-Snakeline:
 
 > **Note:** This pipeline will take a long time depending on the data and number of cores available.
 
-Notes. This pipeline will take a long time depending on the data.
 ## Required Tools  
 
  * [FastQC 0.11.9](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (A quality control tool for high throughput sequence data)
