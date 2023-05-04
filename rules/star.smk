@@ -1,19 +1,27 @@
+# Rule for running STAR on trimmed RNA-seq data to align reads to the reference genome
 rule star:
+    # Input files: trimmed FASTQ files from the Cutadapt rule
     input:
-        read_1="Pipeline/Fastq/CutAdapt/{sample}_R1_001.cutadapt.fastq.gz",
-        read_2="Pipeline/Fastq/CutAdapt/{sample}_R2_001.cutadapt.fastq.gz"
+        read_1 = "Pipeline/Fastq/CutAdapt/{sample}_R1_001.cutadapt.fastq.gz",
+        read_2 = "Pipeline/Fastq/CutAdapt/{sample}_R2_001.cutadapt.fastq.gz"
+    # Output files: aligned BAM file, transcriptome-aligned BAM file, and gene counts
     output:
-        align_bam="Pipeline/STAR/out/{sample}/{sample}Aligned.toTranscriptome.out.bam"
+        bam = "Pipeline/STAR/out/{sample}/{sample}Aligned.sortedByCoord.out.bam",
+        transcriptome_bam = "Pipeline/STAR/out/{sample}/{sample}Aligned.toTranscriptome.out.bam",
+        gene_counts = "Pipeline/STAR/out/{sample}/{sample}ReadsPerGene.out.tab"
     params:
         genome_dir=config['star_supplied']['genome_dir'],
-        out_dir="Pipeline/STAR/out"
-    threads:
-        12  # Set the maximum number of available cores
+        proj_dir="Pipeline/STAR/out/{sample}"
+    threads: 
+        config['star_supplied']['threads'] 
     resources:
         mem_mb=60000
+    log:
+        "logs/STAR/{sample}.log"
     priority:
         2
     shell:
+        "mkdir -p Pipeline/STAR/out/{wildcards.sample}/{wildcards.sample} && "
         "STAR "
         "--readFilesIn {input.read_1} {input.read_2} "
         "--readFilesCommand zcat "
@@ -21,8 +29,8 @@ rule star:
         "--outSAMstrandField intronMotif "
         "--genomeDir {params.genome_dir} "
         "--genomeLoad NoSharedMemory "
-        "--outFileNamePrefix {params.out_dir}/{wildcards.sample} "
+        "--outFileNamePrefix {params.proj_dir}/{wildcards.sample} "
         "--outSAMtype BAM SortedByCoordinate "
         "--quantMode TranscriptomeSAM GeneCounts "
         "--runThreadN {threads} "
-        "--twopassMode Basic"
+        "--twopassMode Basic > {log} 2>&1"
