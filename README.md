@@ -3,7 +3,9 @@ Bulk-RNA-Snakeline
 ![cover](Image/RNA-SEQ.png)
 
 ## Motivation
-With advancements in sequencing technology, a higher number of samples, and greater opportunities for affordability, the production of biological data is massive. As a result, researchers are constantly searching for simpler and more efficient approaches to process and transform large amounts of biological data into information that is both meaningful and reproducible. One approach is to utilize the features and benefits of a workflow engine. Workflow engines are helpful to streamline and automate processing tasks that when done manually, open the door to user bias and mistakes. In order to keep up with increasing data inputs and advancing processing software, the Bioinformatics Core team at the Allen Institute (BiCore), is transitioning towards automated workflows. Specifically, utilizing Snakemake to perform quality assessments, trimming, and mapping on Bulk RNA-Sequencing (Seq) data.
+Due to the rapid advancements in sequencing technology, researchers are now able to generate massive amounts of biological data through an increased number of samples and more affordable options. This has led to a growing demand for simple, efficient methods to process and analyze large datasets, ultimately transforming them into meaningful and reproducible information. Workflow engines offer a valuable solution to this challenge, as they streamline and automate processing tasks, thus reducing the risk of user bias and errors that may arise from manual procedures.
+
+Recognizing the need to adapt to the ever-increasing volume of data inputs and the constant evolution of processing software, the Bioinformatics Core team at the Allen Institute (BiCore) has begun transitioning towards automated workflows. In particular, they are employing Snakemake, a powerful workflow engine, to facilitate the quality assessment, trimming, and mapping of Bulk RNA-Sequencing (RNA-Seq) data. By embracing automated workflows, the BiCore team aims to improve efficiency, consistency, and reproducibility in their research, ultimately enhancing the overall quality of their findings.
 
 Table of Contents
 -----------------
