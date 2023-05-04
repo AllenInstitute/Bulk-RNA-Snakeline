@@ -7,7 +7,7 @@ With advancements in sequencing technology, a higher number of samples, and grea
 
 Table of Contents
 -----------------
-* [Usage](#usage)
+* [Usage](#Quickstart-Guide)
 * [Required Tools](#Required-Tools)
 * [About-Snakeline](#About-Bulk-RNA-Snakeline)
 * [Authors and history](#authors-and-history)
@@ -16,7 +16,7 @@ Table of Contents
 * [Acknowledgments](#acknowledgments)
 * [References](#references)
 
-## Usage
+## Quickstart Guide
 Follow these steps to use the Bulk-RNA-Snakeline:
 1. Download the repository (.zip), move it to your working directory, and unzip it
 2. Create and load Conda environment with all dependencies:
