@@ -58,6 +58,10 @@ rm .snakemake/locks/*
 ```
 snakemake --unlock
 ```
+8c. Errors: Incomplete Run
+```
+srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 48 -s main.smk --latency-wait 60 --rerun-incomplete
+```
 Notes. This pipeline will take a long time depending on the data.
 ## Required Tools  
 
