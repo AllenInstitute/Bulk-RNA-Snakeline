@@ -7,7 +7,7 @@ With advancements in sequencing technology, a higher number of samples, and grea
 
 Table of Contents
 -----------------
-* [Usage](#Quickstart-Guide)
+* [Quickstart-Guide](#Quickstart-Guide)
 * [Required Tools](#Required-Tools)
 * [About-Snakeline](#About-Bulk-RNA-Snakeline)
 * [Authors and history](#authors-and-history)
