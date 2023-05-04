@@ -48,7 +48,7 @@ snakemake --cores 12 -s <snakefile>
 ```
 7b. (Optional) Using Slurm
 ```
-srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 12 -s main.smk
+srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 160 -s main.smk
 ```
 ```
 sbatch run.sh
@@ -63,7 +63,7 @@ snakemake -s main.smk --unlock
 ```
 8c. Errors: Incomplete Run
 ```
-srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 48 -s main.smk --latency-wait 60 --rerun-incomplete
+srun --partition=celltypes --mem=60g --time=24:00:00 snakemake --cores 160 -s main.smk --latency-wait 60 --rerun-incomplete
 ```
 ```
 sbatch rerun.sh
