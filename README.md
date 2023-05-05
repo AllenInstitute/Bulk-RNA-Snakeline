@@ -44,7 +44,7 @@ Follow these steps to use the Bulk-RNA-Snakeline:
     ```
 7. Execute snakemake and run the workflow:
     ```bash
-    snakemake --cores 12 -s <snakefile>
+    snakemake --cores 160 -s <snakefile>
     ```
     Or using Slurm (optional):
     ```bash
