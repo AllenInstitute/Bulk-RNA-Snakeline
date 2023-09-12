@@ -129,7 +129,7 @@ def check_star_version(total_threads):
     with open('configs/config.yml', 'r', encoding='utf-8') as file:
         config_data = file.readlines()
 
-        star_index_path = config_data[30]
+        star_index_path = config_data[32]
         split_star_index_path = star_index_path.split('"')
         split_star_version_index_line = []
 
