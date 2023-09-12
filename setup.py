@@ -111,16 +111,17 @@ def calculate_total_threads(num_samples):
     with open('configs/config.yml', 'r') as f:
         config_data = f.read()
 
-    cutadapt_threads = int(re.search(r'cutadapt:\n\s*threads:\s*(\d+)', config_data).group(1))
-    fastqc_threads = int(re.search(r'fastqc:\n\s*threads:\s*(\d+)', config_data).group(1))
-    star_index_threads = int(re.search(r'star_index:\n\s*threads:\s*(\d+)', config_data).group(1))
-    star_nsupplied_threads = int(re.search(r'star_nsupplied:\n\s*threads:\s*(\d+)', config_data).group(1))
-    star_supplied_threads = int(re.search(r'star_supplied:\n\s*threads:\s*(\d+)', config_data).group(1))
-    stringTie_threads = int(re.search(r'stringTie:\n\s*threads:\s*(\d+)', config_data).group(1))
+    cutadapt_threads = int(re.search(r'cutadapt:.*?threads:\s*(\d+)', config_data, re.DOTALL).group(1))
+    fastqc_threads = int(re.search(r'fastqc:.*?threads:\s*(\d+)', config_data, re.DOTALL).group(1))
+    star_index_threads = int(re.search(r'star_index:.*?threads:\s*(\d+)', config_data, re.DOTALL).group(1))
+    star_nsupplied_threads = int(re.search(r'star_nsupplied:.*?threads:\s*(\d+)', config_data, re.DOTALL).group(1))
+    star_supplied_threads = int(re.search(r'star_supplied:.*?threads:\s*(\d+)', config_data, re.DOTALL).group(1))
+    stringTie_threads = int(re.search(r'stringTie:.*?threads:\s*(\d+)', config_data, re.DOTALL).group(1))
 
-    total_threads_per_sample = cutadapt_threads + fastqc_threads + star_index_threads + star_nsupplied_threads + star_supplied_threads + stringTie_threads
+    #total_threads_per_sample = cutadapt_threads + fastqc_threads + star_index_threads + star_nsupplied_threads + star_supplied_threads + stringTie_threads
+    #total_threads = total_threads_per_sample * num_samples
 
-    total_threads = total_threads_per_sample * num_samples
+    total_threads = 24
 
     return total_threads
 
@@ -146,7 +147,7 @@ def check_star_version(total_threads):
             raise Exception("\n\n STAR Version installed: {} is not the same STAR version used to build STAR index directory: {}".format(starversion[1].split('v')[1], split_star_version_index_line[1]))
         else:
             print('Setup is Complete...continue to run snakemake pipeline with the following command:\n')
-            print('srun --partition=celltypes --mem=200g --time=24:00:00 snakemake --cores {} -s main.smk\n'.format(total_threads))
+            print('srun --partition=celltypes --mem=258g --time=24:00:00 snakemake --cores {} -s main.smk\n'.format(total_threads))
             print('Or\n')
             print('sbatch run.sh')
 
