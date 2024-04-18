@@ -129,11 +129,13 @@ def check_star_version(total_threads):
     with open('configs/config.yml', 'r', encoding='utf-8') as file:
         config_data = file.readlines()
 
-        star_index_path = config_data[32]
+        star_index_path = config_data[31] # May need to change depending on the config.yml lines changes (-1 of the actual line)
+        #print(star_index_path)
         split_star_index_path = star_index_path.split('"')
         split_star_version_index_line = []
+        #print(split_star_index_path[1])
 
-        if star_index_path != "False":
+        if split_star_index_path[1] != "False":
             try:
                 with open('{}/genomeParameters.txt'.format(split_star_index_path[1]), 'r', encoding='utf-8') as file:
                     genome_param = file.readlines()
@@ -142,15 +144,15 @@ def check_star_version(total_threads):
             except:
                 raise Exception("\n\n Double Check: '{}' EXIST".format(split_star_index_path))
 
-        starversion = config_data[16].split('"')
-        if starversion[1].split('v')[1] != split_star_version_index_line[1]:
-            raise Exception("\n\n STAR Version installed: {} is not the same STAR version used to build STAR index directory: {}".format(starversion[1].split('v')[1], split_star_version_index_line[1]))
-        else:
-            print('Setup is Complete...continue to run snakemake pipeline with the following command:\n')
-            print('srun --partition=celltypes --mem=258g --time=24:00:00 snakemake --cores {} -s main.smk\n'.format(total_threads))
-            print('Or\n')
-            print('sbatch run.sh')
-
+            starversion = config_data[15].split('"')
+            if starversion[1].split('v')[1] != split_star_version_index_line[1]:
+                raise Exception("\n\n STAR Version installed: {} is not the same STAR version used to build STAR index directory: {}".format(starversion[1].split('v')[1], split_star_version_index_line[1]))
+        
+        print('Setup is Complete...continue to run snakemake pipeline with the following command:\n')
+        print('srun --partition=celltypes --mem=258g --time=24:00:00 snakemake --cores {} -s main.smk\n'.format(total_threads))
+        print('Or\n')
+        print('sbatch run.sh')
+        
 def main():
     args = get_args()
 
