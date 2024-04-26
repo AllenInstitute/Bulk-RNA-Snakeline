@@ -38,7 +38,7 @@ def create_directories():
 
     # Make Directories for STAR
     os.makedirs('Pipeline/STAR/out', exist_ok=True)
-    os.makedirs('Pipeline/STAR/genome/out', exist_ok=True)
+    os.makedirs('Pipeline/STAR/genome/star_v2.7.1a/SAindex', exist_ok=True)
 
     # Make Directories for StringTie
     os.makedirs('Pipeline/StringTie', exist_ok=True)
