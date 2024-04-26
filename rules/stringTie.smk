@@ -13,7 +13,7 @@ rule stringTie:
     log:
         "logs/stringTie/{sample}.log"
     priority:
-        1
+        2
     shell:
         "stringtie -G {input.gtf} "
         "-e "
