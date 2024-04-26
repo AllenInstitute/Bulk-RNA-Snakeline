@@ -10,11 +10,11 @@ rule starIndex:
     threads:
         config['star_index']['threads']   # Set the maximum number of available cores
     resources:
-        mem_mb=60000
+        mem_mb=40000
     log:
         "logs/star_index.log"
     priority:
-        3
+        4
     shell:
         "STAR "
         "--runMode genomeGenerate "
