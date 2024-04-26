@@ -10,7 +10,7 @@ rule fastqc_raw:
     log:
         "logs/fastqc_raw/{sample}_{read_no}.log"
     priority:
-        6
+        7
     shell:
         "mkdir -p logs/fastqc_raw && "
         "fastqc -o {params.raw_dir} -t {threads} {input.reads_raw} > {log} 2>&1"
@@ -28,7 +28,7 @@ rule fastqc_trimmed:
     log:
         "logs/fastqc_trimmed/{sample}_{read_no}.log"
     priority:
-        4
+        5
     shell:
         "mkdir -p logs/fastqc_trimmed && "
         "fastqc -o {params.cutadapt_dir} -t {threads} {input.reads_cutadapt} > {log} 2>&1"
