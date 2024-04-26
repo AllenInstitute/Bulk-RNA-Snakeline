@@ -1,46 +1,51 @@
-project_name: 
-  "snakeline"
+project_name: "snakeline"
 
 cutadapt:
   fadapter: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA" # Forward Adapter
   radapter: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT" # Reverse Adapter
-  cut: 3
+  cut: 0
   min: 25
   quality_score: 15
-  threads: 4 # Cannot be wrapped in quotes
+  threads: 12 # Cannot be wrapped in quotes
 
 fastqc:
-  threads: 4  
+  threads: 12
 
 # Change star version to the star version you have installed by default it is star_v2.7.1a
-# Changes to star_version needs to be updated on line 17 and 28 (Ex. star_v2.7.1a)
+# Changes to star_version needs to be updated on line 16 and 27 (Ex. star_v2.7.1a)
 star_version: "star_v2.7.1a"
 
 star_index:
-  assembly_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/fasta/v101/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa"
-  # GTF path needs to be added on line 22 and 39
-  gtf_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/human/ensembl/grch38.p13/genome/gtf/v101/Homo_sapiens.GRCh38.101.gtf"
-  threads: 4
+  assembly_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ncbi/mmul10/genome2/fasta/genome.fa"
+  # GTF path needs to be added on line 21 and 38
+  gtf_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ncbi/mmul10/genome2/genes/genes.gtf"
+  threads: 12
   numOverhang: "100"
 
 star_nsupplied:
-  threads: 16
+  threads: 12
   genome_dir: "/Pipeline/STAR/genome/star_v2.7.1a"
 
 # If star index is present add into genome_dir key (Default is False, when no star directory is supplied)
 star_supplied:
-  threads: 16
-  genome_dir: "/allen/programs/celltypes/workgroups/rnaseqanalysis/RNAseq/indexes/cellranger/refdata-cellranger-arc-mm10-2020-A-2.0.0/star"
+  threads: 24
+  genome_dir: "/allen/programs/celltypes/workgroups/rnaseqanalysis/bnguy/Projects/other/rna_wkflow/04_18/Pipeline/STAR/genome/star_v2.7.1a/SAindex"
   # Example
   # genome_dir: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ensembl/mmul10/genome/star_v2.7.10b"
+  # /allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ncbi/mmul10/genome/star
 
 stringTie:
-  threads: 4
-  gtf_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/RNAseq/indexes/cellranger/mm10-3.0.0.premrna.gtf"
+  threads: 12
+  gtf_path: "/allen/programs/celltypes/workgroups/rnaseqanalysis/references/macaque/ncbi/mmul10/genome2/genes/genes.gtf"
 
-#sample: 
+multiqc:
+  threads: 12
+
+default_resources:
+  threads: 12
+  mem_mb: 40000
+
+#sample:
 #  ['AB-BR3004-S001_E1-50_S1_L001', 'AB-BR3004-S002_E1-50_S2_L001', 'AB-BR3004-S003_E1-50_S3_L001', 'AB-BR3004-S004_E1-50_S4_L001', 'AB-BR3004-S005_E1-50_S5_L001', 'AB-BR3004-S006_E1-50_S6_L001', 'AB-BR3004-S007_E1-50_S7_L001']
 
 sample:
-# Append
- ['AB-BR3005-S001_E1-50_S1_L001', 'AB-BR3005-S002_E1-50_S2_L001', 'AB-BR3005-S003_E1-50_S3_L001', 'AB-BR3005-S004_E1-50_S4_L001', 'AB-BR3005-S005_E1-50_S5_L001', 'AB-BR3005-S006_E1-50_S6_L001', 'AB-BR3005-S007_E1-50_S7_L001', 'AB-BR3005-S008_E1-50_S8_L001', 'AB-BR3005-S009_E1-50_S9_L001', 'AB-BR3005-S010_E1-50_S10_L001']
