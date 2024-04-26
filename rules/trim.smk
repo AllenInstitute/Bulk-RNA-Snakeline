@@ -16,7 +16,7 @@ rule cutadapt:
     log:
         "logs/CutAdapt/{sample}_cutadapt.log"
     priority:
-        5
+        6
     shell:
         "cutadapt -u {params.cut} " # First 3 base r1
 	    "-a {params.fadapter} " 
