@@ -1,6 +1,8 @@
 #!/bin/bash
 #SBATCH --partition=celltypes
-#SBATCH --mem=200g
-#SBATCH --time=24:00:00
+#SBATCH --mem=480g
+#SBATCH --time=72:00:00
+#SBATCH --exclusive
+#SBATCH --nodes=2
 
-/usr/bin/time -v snakemake --cores 160 -s main.smk --latency-wait 60
+/usr/bin/time -v snakemake --cores 176 -s main.smk --latency-wait 60
