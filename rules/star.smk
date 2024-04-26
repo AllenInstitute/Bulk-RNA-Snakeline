@@ -6,9 +6,8 @@ rule star:
         read_2 = "Pipeline/Fastq/CutAdapt/{sample}_R2_001.cutadapt.fastq.gz"
     # Output files: aligned BAM file, transcriptome-aligned BAM file, and gene counts
     output:
-        bam = "Pipeline/STAR/out/{sample}/{sample}Aligned.sortedByCoord.out.bam",
-        transcriptome_bam = "Pipeline/STAR/out/{sample}/{sample}Aligned.toTranscriptome.out.bam",
-        gene_counts = "Pipeline/STAR/out/{sample}/{sample}ReadsPerGene.out.tab"
+        bam = "Pipeline/STAR/out/{sample}/{sample}Log.final.out",
+        log_final = "Pipeline/STAR/out/{sample}/{sample}Aligned.sortedByCoord.out.bam"
     params:
         genome_dir=config['star_supplied']['genome_dir'],
         proj_dir="Pipeline/STAR/out/{sample}"
@@ -19,18 +18,22 @@ rule star:
     log:
         "logs/STAR/{sample}.log"
     priority:
-        2
+        3
     shell:
-        "mkdir -p Pipeline/STAR/out/{wildcards.sample}/{wildcards.sample} && "
-        "STAR "
-        "--readFilesIn {input.read_1} {input.read_2} "
-        "--readFilesCommand zcat "
-        "--outSAMattrRGline ID:{wildcards.sample} "
-        "--outSAMstrandField intronMotif "
-        "--genomeDir {params.genome_dir} "
-        "--genomeLoad NoSharedMemory "
-        "--outFileNamePrefix {params.proj_dir}/{wildcards.sample} "
-        "--outSAMtype BAM SortedByCoordinate "
-        "--quantMode TranscriptomeSAM GeneCounts "
-        "--runThreadN {threads} "
-        "--twopassMode Basic > {log} 2>&1"
+        """
+        mkdir -p Pipeline/STAR/out/{wildcards.sample}
+        cmd="STAR \\
+            --readFilesIn {input.read_1} {input.read_2} \\
+            --readFilesCommand zcat \\
+            --outSAMattrRGline ID:{wildcards.sample} \\
+            --outSAMstrandField intronMotif \\
+            --genomeDir {params.genome_dir} \\
+            --genomeLoad NoSharedMemory \\
+            --outFileNamePrefix {params.proj_dir}/{wildcards.sample} \\
+            --outSAMtype BAM SortedByCoordinate \\
+            --quantMode TranscriptomeSAM GeneCounts \\
+            --runThreadN {threads} \\
+            --twopassMode Basic"
+        echo "Running command: $cmd"
+        $cmd > {log} 2>&1
+        """
